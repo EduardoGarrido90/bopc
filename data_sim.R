@@ -1,4 +1,3 @@
-library("graph")
 library("pcalg")
 library("bnlearn")
 
