@@ -1,4 +1,4 @@
-for ((i=1;i<=1;i+=1)); do
+for ((i=1;i<=40;i+=1)); do
 	
 	echo Replica number $i
     mkdir -p exp_results/pes_${i}
