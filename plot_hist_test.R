@@ -44,7 +44,7 @@ for (i in 1 : n_simulations) {
 results_frame <- data.frame(results)
 colnames(results_frame) <- c("Bayesian Optimization", "Random", "Expert")
 
-ggplot(results_frame["Bayesian Optimization"], col="black", aes(x=results[,1], fill= ..count..)) + geom_bar(colour="black") + 
+pl <- ggplot(results_frame["Bayesian Optimization"], col="black", aes(x=results[,1], fill= ..count..)) + geom_bar(colour="black") + 
 	xlab("Tests") +
 	scale_fill_gradient("", low = "grey", high = "grey") +
 	ylab("Absolute frequency") +
@@ -54,5 +54,6 @@ ggplot(results_frame["Bayesian Optimization"], col="black", aes(x=results[,1], f
     	theme(axis.title=element_text(size = 25)) +
     	theme(axis.text.x = element_text(angle = 00, hjust = 0.5, size=19, color="black")) +
     	theme(axis.text.y = element_text(angle = 00, hjust = 0.5, size=23, color="black")) +
-	theme(legend.position="none")+
-	ggsave("./img/hist_test.pdf", width = 9, height =4.9)
+	theme(legend.position="none")
+
+ggsave("./img/hist_test.pdf", plot = pl, width = 9, height =4.9)

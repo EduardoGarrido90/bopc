@@ -44,7 +44,7 @@ for (i in 1 : n_simulations) {
 results_frame <- data.frame(results)
 colnames(results_frame) <- c("Bayesian Optimization", "Random", "Expert")
 
-ggplot(results_frame["Bayesian Optimization"],aes(results[,1])) + 
+pl <- ggplot(results_frame["Bayesian Optimization"],aes(results[,1])) + 
 	geom_histogram(breaks=seq(0, 0.1, by=0.005),  col="black", aes(fill= ..count..)) + 
 	xlab("alpha") +
 	scale_fill_gradient("", low = "grey", high = "grey") +
@@ -55,6 +55,7 @@ ggplot(results_frame["Bayesian Optimization"],aes(results[,1])) +
     	theme(axis.title=element_text(size = 25)) +
     	theme(axis.text.x = element_text(angle = 00, hjust = 0.5, size=23, color="black")) +
     	theme(axis.text.y = element_text(angle = 00, hjust = 0.5, size=23, color="black")) +
-	theme(legend.position="none")+
-	ggsave("./img/hist_alpha.pdf", width = 9, height =4.9)
+	theme(legend.position="none")
+
+ggsave("./img/hist_alpha.pdf", plot = pl, width = 9, height =4.9)
 

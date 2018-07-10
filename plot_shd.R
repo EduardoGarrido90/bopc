@@ -102,7 +102,7 @@ results <- data.frame(Methods = as.factor(results[ , 1 ]), mean = as.double(resu
 
 results[ , 1 ] <- factor(results[, 1 ], levels = c("BO", "RS", "EC", "EC_2"))
 
-ggplot(results, aes(x = iteration, y = mean, colour = Methods)) +
+pl <- ggplot(results, aes(x = iteration, y = mean, colour = Methods)) +
 	geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.5, size = 0.75) +
 	ylab("Log difference normalized SHD") +
 	xlab("Number of function evaluations") +
@@ -118,6 +118,7 @@ ggplot(results, aes(x = iteration, y = mean, colour = Methods)) +
 	theme(axis.title=element_text(size = 20, face = "bold")) +
 	theme(axis.text.x = element_text(angle = 00, hjust = 0.5, size=20, color="black")) +
 	theme(axis.text.y = element_text(angle = 00, hjust = 0.5, size=20, color="black")) +
-	scale_color_manual(values=c("black","orange", "green", "red3", "#0072B2", "green", "purple")) +
-	ggsave("./img/shd.pdf", width = 9, height = 4.9)
+	scale_color_manual(values=c("black","orange", "green", "red3", "#0072B2", "green", "purple"))
+
+ggsave("./img/shd.pdf", plot = pl, width = 9, height = 4.9)
 
