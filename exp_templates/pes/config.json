@@ -1,0 +1,33 @@
+{
+    "language"        : "PYTHON",
+    "random_seed"     : 1,
+    "max_finished_jobs"       : 30,
+    "experiment-name" : "bn_shd_pes_1",
+    "likelihood"      : "NOISELESS",
+    "main_file"       : "wrapper",
+    "acquisition"     : "PES",
+    "mcmc_iters"      : 10,
+    "variables": {
+	"b_test": {
+	    "type": "ENUM",
+            "size": 1,
+	    "options" : ["cor", "zf", "mi-g", "mi-g-sh"]
+	},
+	"c_alpha": {
+            "type": "FLOAT",
+            "size": 1,
+            "min" : -5,
+            "max" : -1
+        }
+    },
+    "tasks": {
+      "shd" : {
+          "type"        : "OBJECTIVE",
+	  "fit_mean"    : false,
+	  "transformations" : [
+		{"Categorical" : { "categorical_dimensions" : [ 0 ], "num_values" : [ 4 ]   }}
+		],
+	  "group"    : 0
+      }
+    }
+}
